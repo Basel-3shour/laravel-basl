@@ -13,3 +13,7 @@ use Illuminate\Support\Facades\DB;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('tasks',[TaskController::class,'index'])->name('tasks.index');
+Route::get('/tasks/{id}',[TaskController::class,'show'])->name('tasks.show');
+Route::post('store',[TaskController::class,'store'])->name('tasks.store');
