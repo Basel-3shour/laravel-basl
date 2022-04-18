@@ -45,21 +45,29 @@
                         <th>&nbsp;</th>
                     </thead>
                     <tbody>
-                         @foreach ($tasks as $task){
+                         @foreach ($tasks as $task)
                             <tr>
                                 <td class="table-text"><div>{{$task->name}}</div></td>
 
                                 <!-- Task Delete Button -->
                                 <td>
-                                    <form action="#" method="POST">
+                                    <form action="{{url('delete/'.$task->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
                                         <button type="submit" class="btn btn-danger">
                                             <i class="fa fa-btn fa-trash"></i>Delete
                                         </button>
                                     </form>
                                 </td>
+                                <td>
+                                    <form action="{{url('edit/'.$task->id)}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-info">
+                                            <i class="fa fa-btn fa-refresh"></i>Update
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
-                         }
-
                          @endforeach
                     </tbody>
                 </table>
